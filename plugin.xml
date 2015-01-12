@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.hecticus.cordova.plugins.sharedconfigurations"
+        version="1.0.0">
+
+  <name>sharedconfigurations</name>
+
+  <description>
+    Share preferences js-native code
+  </description>
+
+  <author>Christian Rodriguez</author>
+
+  <license>MIT</license>
+
+  <keywords>sharepreferences,preferences</keywords>
+
+  <repo></repo>
+
+  <issue></issue>
+
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+
+  <js-module src="www/sharedConfigurations.js" name="SharedConfigurations">
+    <clobbers target="SharedConfigurations" />
+  </js-module>
+
+  <!-- ios -->
+  <platform name="ios">
+
+    <config-file target="config.xml" parent="/*">
+      <feature name="SharedConfigurations">
+        <param name="ios-package" value="SharedConfigurations"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/SharedConfigurations.h"/>
+    <source-file src="src/ios/SharedConfigurations.m"/>
+  </platform>
+
+  <!-- android -->
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="SharedConfigurations">
+        <param name="android-package" value="com.hecticus.cordova.plugins.sharedconfigurations.SharedConfigurations" />
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/com/hecticus/cordova/plugins/sharedconfigurations/SharedConfigurations.java" target-dir="src/com/hecticus/cordova/plugins/sharedconfigurations"/>
+  </platform>
+
+</plugin>
